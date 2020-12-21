@@ -36,4 +36,8 @@ class Payment {
         this.provider = provider;
         return this.provider;
     }
+    process(redirectBrowser = false) {
+        let date = new Date();
+        let currentUnixTimeStamp = date.getTime();
+    }
 }

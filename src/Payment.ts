@@ -37,7 +37,7 @@ class Payment {
         return new Payment(connection, orderId, amount);
     }
     
-    constructor(connection: Connection, orderId: string, amount: string) {
+    private constructor(connection: Connection, orderId: string, amount: string) {
         this.connection = connection;
         this.orderId = orderId;
         this.amount = amount;
@@ -51,5 +51,13 @@ class Payment {
     public setProvider(provider: Provider | null) {
         this.provider = provider;
         return this.provider;
+    }
+
+    public process(redirectBrowser: boolean = false) {
+        let date = new Date();
+        let currentUnixTimeStamp = date.getTime();
+
+
+        
     }
 }

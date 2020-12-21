@@ -61,7 +61,7 @@ class User {
             return new User(email, firstName, lastName, contactNumber);
         }
 
-    constructor(
+    private constructor(
         email: string | null, 
         firstName: string | null, 
         lastName: string | null, 

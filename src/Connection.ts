@@ -29,7 +29,7 @@ class Connection {
         }
     }
 
-    constructor(terminalId: string, terminalSecret: string) {
+    private constructor(terminalId: string, terminalSecret: string) {
         this.terminalId = terminalId;
         this.terminalSecret = terminalSecret;
     }
