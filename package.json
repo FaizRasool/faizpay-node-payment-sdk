@@ -19,7 +19,5 @@
     "url": "https://github.com/FaizRasool/faizpay-node-payment-sdk/issues"
   },
   "homepage": "https://github.com/FaizRasool/faizpay-node-payment-sdk#readme",
-  "dependencies": {
-    "jwt-decode": "^3.1.2"
-  }
+  "dependencies": {}
 }

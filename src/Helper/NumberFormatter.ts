@@ -6,11 +6,10 @@ class NumberFormatter {
 
     }
 
-    public static validateTwoDecimals(number: number) {
+    public static validateTwoDecimals(number: string) {
         const twoDecimalsRegex = /^[0-9]+\.[0-9]{2}$/;
-        const numberAsString = (String)(number);
 
-        if (twoDecimalsRegex.test(numberAsString)) {
+        if (twoDecimalsRegex.test(number)) {
 
             return true;
 
@@ -23,3 +22,4 @@ class NumberFormatter {
 
 }
 
+export { NumberFormatter };
