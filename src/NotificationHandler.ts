@@ -79,3 +79,5 @@ class NotificationHandler {
     }
 
 }
+
+export { NotificationHandler };

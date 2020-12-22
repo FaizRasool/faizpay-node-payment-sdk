@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NotificationHandler = void 0;
 const jwt_simple_1 = __importDefault(require("jwt-simple"));
 const NumberFormatter_1 = require("../src/Helper/NumberFormatter");
 const Errors_1 = require("./Errors");
@@ -60,3 +61,4 @@ class NotificationHandler {
         return this.token.terminal;
     }
 }
+exports.NotificationHandler = NotificationHandler;
