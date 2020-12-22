@@ -1,3 +1,4 @@
+import jwt from "jwt-simple";
 import { Connection } from "./Connection";
 import { Provider } from "./Provider";
 import { User } from "./User";
@@ -6,7 +7,6 @@ import { Errors } from "./Errors";
 import { NumberFormatter } from "./Helper/NumberFormatter";
 
 class Payment {
-    private alg: string = "HS512";
     private endpoint: string = 'https://faizpay-staging.netlify.app/pay?token=';
     private tokenExpiry: number = (60 * 120); 
     protected connection: Connection;
@@ -57,7 +57,30 @@ class Payment {
         let date = new Date();
         let currentUnixTimeStamp = date.getTime();
 
+        let payload: any = {
+            "iat": currentUnixTimeStamp,
+            "exp": currentUnixTimeStamp + this.tokenExpiry,
+            "terminalID": this.connection.getTerminalId(),
+            "orderID": this.orderId,
+            "amount": this.amount
+        }
 
-        
+        if (this.user instanceof User) {
+            payload.email = this.user.getEmail();
+            payload.firstName = this.user.getFirstName();
+            payload.lastName = this.user.getLastName();
+            payload.contactNumber = this.user.getContactNumber();
+        }
+
+        if (this.provider instanceof Provider) {
+            payload.bankID = this.provider.getProviderId();
+            payload.sortCode = this.provider.getSortCode();
+            payload.accountNumber = this.provider.getAccountNumber();
+        }
+
+        const jwtToken = jwt.encode(payload, this.connection.getTerminalSecret(), "HS512");
+
+        const url = this.endpoint + jwtToken;
+        return url;
     }
 }
