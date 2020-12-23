@@ -70,7 +70,7 @@ describe("NotificationHandler test", () => {
         const date = Date.now()/1000;
         const time = Math.round(date);
 
-        let token = jwt.encode({
+        const token = jwt.encode({
             exp: time - 1000,
             id: "1",
             orderID: "abc",
@@ -102,7 +102,7 @@ describe("NotificationHandler test", () => {
 
         const connection = getValidConnection();
 
-        let token = jwt.encode({
+        const token = jwt.encode({
             id: "1",
             netAmount: "10",
             terminal: "1536bc14-9273-460e-9711-7e96733616fe"
@@ -131,7 +131,7 @@ describe("NotificationHandler test", () => {
 
         const connection = getValidConnection();
 
-        let token = jwt.encode({
+        const token = jwt.encode({
             id: "1",
             orderID: "abc",
             requestAmount: "10",
@@ -162,7 +162,7 @@ describe("NotificationHandler test", () => {
 
         const connection = getValidConnection();
 
-        let token = jwt.encode({
+        const token = jwt.encode({
             id: "1",
             orderID: "abc",
             requestAmount: "10.00",
@@ -195,7 +195,7 @@ describe("NotificationHandler test", () => {
 
         const connection = getValidConnection();
 
-        let token = jwt.encode({
+        const token = jwt.encode({
             id: "1",
             orderID: "abc",
             requestAmount: "10.00",
@@ -213,12 +213,12 @@ describe("NotificationHandler test", () => {
 
             if (payment instanceof NotificationHandler) {
 
-                expect(payment.validateAmount("10.00")).to.be.true; 
-                expect(payment.validateAmount("10.00000000000000")).to.be.true; 
-                expect(payment.validateAmount("10")).to.be.true;
-                expect(payment.validateAmount("11.00000001")).to.be.false;  
-                expect(payment.validateAmount("ABC")).to.be.false;  
-                expect(payment.validateAmount("A$$!@£!@£!@3BC")).to.be.false;  
+                expect(payment.validateAmount("10.00")).should.equal(true); 
+                expect(payment.validateAmount("10.00000000000000")).should.equal(true); 
+                expect(payment.validateAmount("10")).should.equal(true); 
+                expect(payment.validateAmount("11.00000001")).should.equal(false); 
+                expect(payment.validateAmount("ABC")).should.equal(false); 
+                expect(payment.validateAmount("A$$!@£!@£!@3BC")).should.equal(false); 
 
             }
         }
@@ -229,7 +229,7 @@ describe("NotificationHandler test", () => {
 
         const connection = getValidConnection();
 
-        let token = jwt.encode({
+        const token = jwt.encode({
             id: "1",
             orderID: "abc",
             requestAmount: "10.00",

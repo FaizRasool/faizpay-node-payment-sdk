@@ -48,7 +48,7 @@ describe("Payment test", () => {
         if (connection instanceof Connection) {
 
             const params = {
-                connection: connection,
+                connection,
                 orderId: "",
                 amount: "10.00"
             }
@@ -75,13 +75,13 @@ describe("Payment test", () => {
         if (connection instanceof Connection) {
 
             const params1 = {
-                connection: connection,
+                connection,
                 orderId: "   ",
                 amount: "10.00"
             }
 
             const params2 = {
-                connection: connection,
+                connection,
                 orderId: "                     ",
                 amount: "10.00"
             }
@@ -119,7 +119,7 @@ describe("Payment test", () => {
         if (connection instanceof Connection) {
 
             const params = {
-                connection: connection,
+                connection,
                 orderId: "a".repeat(256),
                 amount: "10.00"
             }
@@ -146,7 +146,7 @@ describe("Payment test", () => {
         if (connection instanceof Connection) {
 
             const params = {
-                connection: connection,
+                connection,
                 orderId: "abc",
                 amount: "0.00"
             }
@@ -173,7 +173,7 @@ describe("Payment test", () => {
         if (connection instanceof Connection) {
 
             const params = {
-                connection: connection,
+                connection,
                 orderId: "abc",
                 amount: ""
             }
@@ -200,7 +200,7 @@ describe("Payment test", () => {
         if (connection instanceof Connection) {
 
             const params = {
-                connection: connection,
+                connection,
                 orderId: "abc",
                 amount: "-1.00"
             }
@@ -227,13 +227,13 @@ describe("Payment test", () => {
         if (connection instanceof Connection) {
 
             const params1 = {
-                connection: connection,
+                connection,
                 orderId: "abc",
                 amount: "0.000000001"
             }
 
             const params2 = {
-                connection: connection,
+                connection,
                 orderId: "abc",
                 amount: "1"
             }
@@ -269,7 +269,7 @@ describe("Payment test", () => {
         if (connection instanceof Connection) {
 
             const params = {
-                connection: connection,
+                connection,
                 orderId: "abc",
                 amount: "A.BB"
             }
@@ -296,7 +296,7 @@ describe("Payment test", () => {
         if (connection instanceof Connection) {
 
             const params = {
-                connection: connection,
+                connection,
                 orderId: "abc",
                 amount: "1.00"
             }
@@ -359,8 +359,8 @@ describe("Payment test", () => {
             const params3 = {
                 order: "abc",
                 amount: "100.00",
-                user: user,
-                provider: provider
+                user,
+                provider
             }
     
             const tokenData = getToken(params3.order, params3.amount, params3.user, params3.provider);
