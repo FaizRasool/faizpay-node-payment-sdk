@@ -1,4 +1,4 @@
-import { expect } from "chai";
+import { expect, should } from "chai";
 import { Connection } from "../src/Connection";
 import { ErrorHandler } from "../src/ErrorHandler";
 import { Errors } from "../src/Errors";
