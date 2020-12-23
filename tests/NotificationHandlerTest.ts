@@ -1,10 +1,9 @@
-import { expect, should } from "chai";
+import { expect } from "chai";
 import { Connection } from "../src/Connection";
 import { ErrorHandler } from "../src/ErrorHandler";
 import { Errors } from "../src/Errors";
 import { NotificationHandler } from "../src/NotificationHandler";
 import jwt from "jwt-simple";
-import { Payment } from "../src/Payment";
 
 const getValidConnection = () => {
     return Connection.createConnection("1536bc14-9273-460e-9711-7e96733616fe",
@@ -213,12 +212,12 @@ describe("NotificationHandler test", () => {
 
             if (payment instanceof NotificationHandler) {
 
-                expect(payment.validateAmount("10.00")).should.equal(true); 
-                expect(payment.validateAmount("10.00000000000000")).should.equal(true); 
-                expect(payment.validateAmount("10")).should.equal(true); 
-                expect(payment.validateAmount("11.00000001")).should.equal(false); 
-                expect(payment.validateAmount("ABC")).should.equal(false); 
-                expect(payment.validateAmount("A$$!@£!@£!@3BC")).should.equal(false); 
+                expect(payment.validateAmount("10.00")).to.equal(true); 
+                expect(payment.validateAmount("10.00000000000000")).to.equal(true); 
+                expect(payment.validateAmount("10")).to.equal(true); 
+                expect(payment.validateAmount("11.00000001")).to.equal(false); 
+                expect(payment.validateAmount("ABC")).to.equal(false); 
+                expect(payment.validateAmount("A$$!@£!@£!@3BC")).to.equal(false); 
 
             }
         }
