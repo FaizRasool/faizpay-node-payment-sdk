@@ -54,12 +54,11 @@ class Payment {
   }
 
   public process(): string {
-    const date = new Date();
-    const currentUnixTimeStamp = date.getTime();
+    const currentUnixTimeStamp = Date.now()/1000;
 
     const payload: any = {
       iat: currentUnixTimeStamp,
-      exp: currentUnixTimeStamp + this.tokenExpiry,
+      exp: this.tokenExpiry + currentUnixTimeStamp,
       terminalID: this.connection.getTerminalId(),
       orderID: this.orderId,
       amount: this.amount,

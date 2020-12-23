@@ -67,11 +67,11 @@ describe("NotificationHandler test", () => {
 
         const connection = getValidConnection();
 
-        let date = new Date();
-        let time = date.getTime();
+        const date = Date.now()/1000;
+        const time = Math.round(date);
 
         let token = jwt.encode({
-            exp: time - 100,
+            exp: time - 1000,
             id: "1",
             orderID: "abc",
             requestAmount: "10",

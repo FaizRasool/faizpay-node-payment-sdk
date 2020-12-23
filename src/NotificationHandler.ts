@@ -12,7 +12,6 @@ class NotificationHandler {
     try {
       token = jwt.decode(token, connection.getTerminalSecret(), false, "HS512");
 
-      token = JSON.parse(JSON.stringify(token));
     } catch {
       return new ErrorHandler(Errors.CODE_16);
     }
