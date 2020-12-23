@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { ErrorHandler } from "../ErrorHandler";
-import { Errors } from "../Errors";
-import { User } from "../User";
+import { ErrorHandler } from "../src/ErrorHandler";
+import { Errors } from "../src/Errors";
+import { User } from "../src/User";
 
 describe("User test", () => {
 
@@ -15,11 +15,14 @@ describe("User test", () => {
         }
 
         const user = User.createUser(params.email, params.firstName, params.lastName, 
-            params.contactNumber) as ErrorHandler;
+            params.contactNumber);
         
         expect(user).to.be.instanceOf(ErrorHandler);
-        expect(user.getCode()).to.be.eql(Errors.CODE_11[0]);
-        expect(user.getMessage()).to.be.eql(Errors.CODE_11[1]);
+
+        if (user instanceof ErrorHandler) {
+            expect(user.getCode()).to.be.eql(Errors.CODE_11[0]);
+            expect(user.getMessage()).to.be.eql(Errors.CODE_11[1]);
+        }
 
     });
 
@@ -47,25 +50,34 @@ describe("User test", () => {
         }
 
         const user1 = User.createUser(params1.email, params1.firstName, params1.lastName, 
-            params1.contactNumber) as ErrorHandler;
+            params1.contactNumber);
 
         const user2 = User.createUser(params2.email, params2.firstName, params2.lastName, 
-            params2.contactNumber) as ErrorHandler;
+            params2.contactNumber);
 
         const user3 = User.createUser(params3.email, params3.firstName, params3.lastName, 
-            params3.contactNumber) as ErrorHandler;
+            params3.contactNumber);
         
         expect(user1).to.be.instanceOf(ErrorHandler);
-        expect(user1.getCode()).to.be.eql(Errors.CODE_12[0]);
-        expect(user1.getMessage()).to.be.eql(Errors.CODE_12[1]);
+
+        if (user1 instanceof ErrorHandler) {
+            expect(user1.getCode()).to.be.eql(Errors.CODE_12[0]);
+            expect(user1.getMessage()).to.be.eql(Errors.CODE_12[1]);
+        }
 
         expect(user2).to.be.instanceOf(ErrorHandler);
-        expect(user2.getCode()).to.be.eql(Errors.CODE_13[0]);
-        expect(user2.getMessage()).to.be.eql(Errors.CODE_13[1]);
+
+        if (user2 instanceof ErrorHandler) {
+            expect(user2.getCode()).to.be.eql(Errors.CODE_13[0]);
+            expect(user2.getMessage()).to.be.eql(Errors.CODE_13[1]);
+        }
 
         expect(user3).to.be.instanceOf(ErrorHandler);
-        expect(user3.getCode()).to.be.eql(Errors.CODE_14[0]);
-        expect(user3.getMessage()).to.be.eql(Errors.CODE_14[1]);
+
+        if (user3 instanceof ErrorHandler) {
+            expect(user3.getCode()).to.be.eql(Errors.CODE_14[0]);
+            expect(user3.getMessage()).to.be.eql(Errors.CODE_14[1]);
+        }
 
     });
 
@@ -79,13 +91,16 @@ describe("User test", () => {
         }
 
         const user = User.createUser(params.email, params.firstName, params.lastName, 
-            params.contactNumber) as User;
+            params.contactNumber);
         
         expect(user).to.be.instanceOf(User);
-        expect(user.getEmail()).to.be.eql(params.email);
-        expect(user.getFirstName()).to.be.eql(params.firstName);
-        expect(user.getLastName()).to.be.eql(params.lastName);
-        expect(user.getContactNumber()).to.be.eql(params.contactNumber); 
+
+        if (user instanceof User) {
+            expect(user.getEmail()).to.be.eql(params.email);
+            expect(user.getFirstName()).to.be.eql(params.firstName);
+            expect(user.getLastName()).to.be.eql(params.lastName);
+            expect(user.getContactNumber()).to.be.eql(params.contactNumber); 
+        }
 
     });
 })

@@ -5,79 +5,73 @@ import { Errors } from "./Errors";
 import { ErrorHandler } from "./ErrorHandler";
 
 class NotificationHandler {
-    protected connection: Connection;
-    protected token: any;
+  protected connection: Connection;
+  protected token: any;
 
-    public static createNotificationHandler(connection: Connection, token: any) {
+  public static createNotificationHandler(connection: Connection, token: any): ErrorHandler | NotificationHandler {
+    try {
+      token = jwt.decode(token, connection.getTerminalSecret(), false, "HS512");
 
-        try {
-            token = jwt.decode(token, connection.getTerminalSecret(), false, "HS512");  
-
-            token = JSON.parse(JSON.stringify(token));
-        
-        } catch {
-            return new ErrorHandler(Errors.CODE_16);
-        }
-
-        if (
-            !token.hasOwnProperty("id") ||
-            !token.hasOwnProperty("orderID") ||
-            !token.hasOwnProperty("requestAmount") ||
-            !token.hasOwnProperty("netAmount") ||
-            !token.hasOwnProperty("terminal")
-        ) {
-            return new ErrorHandler(Errors.CODE_17);
-        }
-
-        if (token.terminal !== connection.getTerminalId()) {
-            return new ErrorHandler(Errors.CODE_18);
-        }
-
-        return new NotificationHandler(connection, token);
+      token = JSON.parse(JSON.stringify(token));
+    } catch {
+      return new ErrorHandler(Errors.CODE_16);
     }
 
-    constructor(connection: Connection, token: any) {
-        this.connection = connection;
-        this.token = token;
+    if (
+      !token.hasOwnProperty("id") ||
+      !token.hasOwnProperty("orderID") ||
+      !token.hasOwnProperty("requestAmount") ||
+      !token.hasOwnProperty("netAmount") ||
+      !token.hasOwnProperty("terminal")
+    ) {
+      return new ErrorHandler(Errors.CODE_17);
     }
 
-    public validateAmount(requestedAmount: string) {
-        const numericStringRegex = /^-?[\d.]+(?:e-?\d+)?/;
-        const requestAmountNumber = parseFloat(requestedAmount);
-        
-        if (!numericStringRegex.test(requestedAmount)) {
-            return false;
-        }  
-
-        if (NumberFormatter.formatNumber(this.token.requestAmount) != 
-        NumberFormatter.formatNumber(requestAmountNumber)) {
-            return false;
-        }
-
-        return true;
-
+    if (token.terminal !== connection.getTerminalId()) {
+      return new ErrorHandler(Errors.CODE_18);
     }
 
-    public getOrderID() {
-        return this.token.orderID;
+    return new NotificationHandler(connection, token);
+  }
+
+  constructor(connection: Connection, token: any) {
+    this.connection = connection;
+    this.token = token;
+  }
+
+  public validateAmount(requestedAmount: string): boolean {
+    const numericStringRegex = /^-?[\d.]+(?:e-?\d+)?/;
+
+    if (!numericStringRegex.test(requestedAmount)) {
+      return false;
     }
 
-    public getRequestedAmount() {
-        return this.token.requestAmount;
+    if (NumberFormatter.formatNumber(this.token.requestAmount) !== NumberFormatter.formatNumber(requestedAmount)) {
+      return false;
     }
 
-    public getNetAmount() {
-        return this.token.netAmount;
-    }
+    return true;
+  }
 
-    public getId() {
-        return this.token.id;
-    }
+  public getOrderID(): any {
+    return this.token.orderID;
+  }
 
-    public getTerminal() {
-        return this.token.terminal;
-    }
+  public getRequestedAmount(): any {
+    return this.token.requestAmount;
+  }
 
+  public getNetAmount(): any {
+    return this.token.netAmount;
+  }
+
+  public getId(): any {
+    return this.token.id;
+  }
+
+  public getTerminal(): any {
+    return this.token.terminal;
+  }
 }
 
 export { NotificationHandler };

@@ -1,0 +1,25 @@
+{
+  "extends": ["airbnb"],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "import/no-unresolved": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 300
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "global-require": "off",
+    "import/no-dynamic-require": "off"
+  },
+  "settings": {
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs"]
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  }
+}

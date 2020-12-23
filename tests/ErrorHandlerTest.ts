@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { ErrorHandler } from "../ErrorHandler";
-import { Errors } from "../Errors";
+import { ErrorHandler } from "../src/ErrorHandler";
+import { Errors } from "../src/Errors";
 
 describe("ErrorHandler test", () => {  
 

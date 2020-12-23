@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { Connection } from "../Connection";
-import { ErrorHandler } from "../ErrorHandler";
-import { Errors } from "../Errors";
+import { Connection } from "../src/Connection";
+import { ErrorHandler } from "../src/ErrorHandler";
+import { Errors } from "../src/Errors";
 
 describe("Connection test", () => {  
 
@@ -13,11 +13,14 @@ describe("Connection test", () => {
         }
 
         const connection = Connection
-        .createConnection(params.terminalId, params.terminalSecret) as ErrorHandler;
+        .createConnection(params.terminalId, params.terminalSecret); 
 
         expect(connection).to.be.instanceOf(ErrorHandler);
-        expect(connection.getCode()).to.be.eql(Errors.CODE_1[0]);
-        expect(connection.getMessage()).to.be.eql(Errors.CODE_1[1]); 
+
+        if (connection instanceof ErrorHandler) {
+            expect(connection.getCode()).to.be.eql(Errors.CODE_1[0]);
+            expect(connection.getMessage()).to.be.eql(Errors.CODE_1[1]); 
+        }
 
     });
 
@@ -28,11 +31,14 @@ describe("Connection test", () => {
             secret: "aa"
         }
 
-        const connection = Connection.createConnection(params.id, params.secret) as ErrorHandler;
+        const connection = Connection.createConnection(params.id, params.secret);
 
         expect(connection).to.be.instanceOf(ErrorHandler);
-        expect(connection.getCode()).to.be.eql(Errors.CODE_2[0]);
-        expect(connection.getMessage()).to.be.eql(Errors.CODE_2[1]);
+
+        if (connection instanceof ErrorHandler) {
+            expect(connection.getCode()).to.be.eql(Errors.CODE_2[0]);
+            expect(connection.getMessage()).to.be.eql(Errors.CODE_2[1]);
+        }
 
     });
 
@@ -43,11 +49,14 @@ describe("Connection test", () => {
             secret: "aa"
         }
 
-        const connection = Connection.createConnection(params.id, params.secret) as ErrorHandler;
+        const connection = Connection.createConnection(params.id, params.secret);
 
         expect(connection).to.be.instanceOf(ErrorHandler);
-        expect(connection.getCode()).to.be.eql(Errors.CODE_1[0]);
-        expect(connection.getMessage()).to.be.eql(Errors.CODE_1[1]); 
+
+        if (connection instanceof ErrorHandler) {
+            expect(connection.getCode()).to.be.eql(Errors.CODE_1[0]);
+            expect(connection.getMessage()).to.be.eql(Errors.CODE_1[1]); 
+        }
 
     });
 
@@ -58,11 +67,14 @@ describe("Connection test", () => {
             secret: "f9fd95d5-2acb-4643-b3fb-b16999f37175"
         }
 
-        const connection = Connection.createConnection(params.id, params.secret) as Connection;
+        const connection = Connection.createConnection(params.id, params.secret);
 
         expect(connection).to.be.instanceOf(Connection);
-        expect(connection.getTerminalId()).to.be.eql(params.id);
-        expect(connection.getTerminalSecret()).to.be.eql(params.secret);
+
+        if (connection instanceof Connection) {
+            expect(connection.getTerminalId()).to.be.eql(params.id);
+            expect(connection.getTerminalSecret()).to.be.eql(params.secret);
+        }
 
     });
 
