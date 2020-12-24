@@ -15,7 +15,7 @@ describe("NotificationHandler test", () => {
     it(`Invalid 'token' parameter for NotificationHandler.createNotificationHandler() should
     return CODE_16 error.`, () => {
 
-        const connection = getValidConnection();
+        const connection = getValidConnection(); 
 
         if (connection instanceof Connection) {
 

@@ -1,5 +1,5 @@
-src
 tsconfig.json
 tslint.json
 .prettierrc
 example
+.nyc_output
