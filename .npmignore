@@ -3,3 +3,4 @@ tslint.json
 .prettierrc
 example
 .nyc_output
+.idea
