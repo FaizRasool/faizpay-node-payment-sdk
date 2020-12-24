@@ -1,6 +1,6 @@
 {
   "name": "faizpay-node-payment-sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "SDK for working with FaizPay payment APIs. NodeJS version.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
