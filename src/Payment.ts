@@ -62,6 +62,13 @@ class Payment {
       terminalID: this.connection.getTerminalId(),
       orderID: this.orderId,
       amount: this.amount,
+      email: null,
+      firstName: null,
+      lastName: null,
+      contactNumber: null,
+      bankID: null,
+      sortCode: null,
+      accountNumber: null
     };
 
     if (this.user instanceof User) {
