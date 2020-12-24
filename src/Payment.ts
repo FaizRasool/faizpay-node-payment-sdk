@@ -54,7 +54,7 @@ class Payment {
   }
 
   public process(): string {
-    const currentUnixTimeStamp = Date.now()/1000;
+    const currentUnixTimeStamp = Date.now() / 1000;
 
     const payload: any = {
       iat: currentUnixTimeStamp,

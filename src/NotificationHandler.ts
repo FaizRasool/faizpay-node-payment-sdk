@@ -11,7 +11,6 @@ class NotificationHandler {
   public static createNotificationHandler(connection: Connection, token: any): ErrorHandler | NotificationHandler {
     try {
       token = jwt.decode(token, connection.getTerminalSecret(), false, "HS512");
-
     } catch {
       return new ErrorHandler(Errors.CODE_16);
     }
