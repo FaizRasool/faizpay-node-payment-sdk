@@ -1,6 +1,6 @@
 {
   "name": "faizpay-node-payment-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "SDK for working with FaizPay payment APIs. NodeJS version.",
   "main": "dist/",
   "types": "dist/",
@@ -11,7 +11,7 @@
     "test": "nyc mocha dist/tests/*.js",
     "build": "tsc",
     "start": "node dist/src/index.js",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\" \"dist/src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
