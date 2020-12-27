@@ -7,8 +7,8 @@ Documentation
 ------------
 Full documentation can be found at: 
 
-- Node: https://documentation.faizpay.com/node
-- Typescript: https://documentation.faizpay.com/type-script
+- Javascript / Node: https://documentation.faizpay.com/typescript.html
+- Typescript: https://documentation.faizpay.com/typescript.html
 
 
 Requirements
