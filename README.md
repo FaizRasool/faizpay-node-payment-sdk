@@ -27,7 +27,7 @@ npm install faizpay-node-payment-sdk
 or 
 
 ```bash
-yarn adds faizpay-node-payment-sdk
+yarn add faizpay-node-payment-sdk
 ```
 
 Getting Started (Javascript)
