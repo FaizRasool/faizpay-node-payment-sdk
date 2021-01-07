@@ -7,7 +7,7 @@ import { Errors } from "./Errors";
 import { NumberFormatter } from "./Helper/NumberFormatter";
 
 class Payment {
-  private endpoint: string = "https://faizpay-staging.netlify.app/pay?token=";
+  private endpoint: string = "https://app.faizpay.com/pay?token=";
   private tokenExpiry: number = 60 * 120;
   protected connection: Connection;
   protected orderId: string;
