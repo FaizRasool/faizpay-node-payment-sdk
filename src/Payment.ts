@@ -68,7 +68,7 @@ class Payment {
       contactNumber: "",
       bankID: "",
       sortCode: "",
-      accountNumber: ""
+      accountNumber: "",
     };
 
     if (this.user instanceof User) {
